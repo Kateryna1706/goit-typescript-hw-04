@@ -5,12 +5,6 @@ interface ObserverProps {
   onContentEndVisible: () => void;
 }
 
-interface Options {
-  rootMargin: string;
-  threshold: number;
-  root: null;
-}
-
 export const Observer: FC<ObserverProps> = ({
   children,
   onContentEndVisible,
@@ -18,11 +12,11 @@ export const Observer: FC<ObserverProps> = ({
   const endContentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const options: Options = {
-      rootMargin: "0px",
-      threshold: 1.0,
-      root: null,
-    };
+   const options: IntersectionObserverInit = {
+     rootMargin: "0px",
+     threshold: 1.0,
+     root: null,
+   };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
